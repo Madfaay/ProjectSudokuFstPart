@@ -41,9 +41,13 @@ def tracer_grillage_horizontal():
 
 tracer_grillage_verticale()
 tracer_grillage_horizontal()
+# en effet comme j'ai un probleme d'affichage j'étais obligé de faire ces instructions ici pour completer l'affichage
 canvas.create_line(2, 2, 2, 900, fill="black", width=2)
 canvas.create_line(2, 2, 900, 1, fill="black", width=2)
 canvas.create_line(2, 792, 900, 792, fill="black", width=2)
+# sur mon ordi avec une surface d'affichage de 900 * 900 j'ai pas toute les lignes donc c'est pour cela j'ai mis des chiffres bizzares
+# ex : 792 , mais normalement cela doit etre  900 . donc testez chez vous et n'hesitez pas à modifier . aussi à cause de cela
+#que j'ai commencé le traçage avec l'abscisse (2,2) et non avec (0, 0 ) Donc teste chez vous et tests differents parametres .
 
 
 
