@@ -1,5 +1,4 @@
 
-Matrix_length = 0
 
 
 def create_matrix(taille):
