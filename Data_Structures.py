@@ -19,14 +19,7 @@ def create_matrix(taille , struct):
     return matrix
 
 
-
-
-
-
-game_matrix = create_matrix(9 , struct_case)
-
-
-
+game_matrix = create_matrix(9, struct_case)
 
 print(game_matrix)
 
