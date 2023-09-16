@@ -1,6 +1,6 @@
 
 
-struct_case = {"nGrp": 0, "Note_list": [], "val": 0}
+struct_case = {"nblock": 0, "Note_list": [], "val": 0}
 
 def create_matrix(taille , struct):
     current_length = 0
@@ -10,28 +10,10 @@ def create_matrix(taille , struct):
         matrix.append(liste_vide)
         current_length += 1
     current_length = 0
-    block_nmb= 1
-    line_indice = 1
-    nbr_fois = 1
     for grille in matrix:
 
         while current_length < taille:
-            if nbr_fois == 3:
-                nbr_fois = 1
-                block_nmb += 1
-            if line_indice % 9 == 0 :
-               line_indice = 1
-               nbr_fois += 1
-
-            else :
-                if line_indice % 3 == 0:
-                  print(line_indice)
-                  block_nmb += 1
-            new_element = struct
-            struct["nGrp"] = block_nmb
-            print(block_nmb)
             grille.append(struct)
-            line_indice+= 1
             current_length += 1
     current_length = 0
     return matrix
@@ -40,9 +22,15 @@ def create_matrix(taille , struct):
 
 
 
-#
+
 game_matrix = create_matrix(9 , struct_case)
+
+
+
+
 print(game_matrix)
+
+
 #Proposition pour les fonctions de semaine 38 :
 
 #_boxIsEmpty(x , y) (verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
