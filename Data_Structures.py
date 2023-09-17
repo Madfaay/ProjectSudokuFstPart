@@ -1,3 +1,4 @@
+import copy
 
 
 struct_case = {"nblock": 0, "Note_list": [], "val": 0}
@@ -25,36 +26,44 @@ def create_matrix(taille , struct):
 
 
 
-game_matrix = create_matrix(9, struct_case)
 
 
 def block_define(matrix):
+    matrix_copy = copy.deepcopy(matrix)
     nb_block = 1
     times_nb = 0
     colon_nb = 0
     for i in range(9):
         for j in range(9):
-
-            matrix[i][j]['nblock'] = nb_block
+            matrix_copy[i][j].update({'nblock' : nb_block })
             times_nb += 1
-            print(i , j)
-            if times_nb % 3 and colon_nb < 9:
+
+            if times_nb % 3 == 0 and times_nb != 0 and times_nb != 9 and colon_nb < 3:
                 nb_block += 1
-            if times_nb == 9:
-                nb_block -= 2
-                times_nb = 0
-                colon_nb += 1
+            else :
+                if nb_block % 3 == 0 and colon_nb < 3 and times_nb % 3 == 0:
+                  nb_block += 1
+            if times_nb == 9 :
+                if colon_nb == 2 :
+                    colon_nb = 0
+                    times_nb = 0
 
-            if nb_block % 3 == 0 and colon_nb < 3:
-                nb_block += 1
-            if colon_nb == 3:
-                nb_block += 1
-                colon_nb = 0
+                else :
+                    nb_block -= 3
+                    times_nb = 0
+                    colon_nb += 1
+
+    return matrix_copy
 
 
 
+game_matrix = create_matrix(9, struct_case)
 
-print(block_define(game_matrix))
+print(game_matrix)
+new_matrix = block_define(game_matrix)
+
+print(new_matrix)
+
 
 
 #Proposition pour les fonctions de semaine 38 :
