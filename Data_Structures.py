@@ -19,9 +19,42 @@ def create_matrix(taille , struct):
     return matrix
 
 
+
+#def block_define(matrix):
+
+
+
+
 game_matrix = create_matrix(9, struct_case)
 
-print(game_matrix)
+
+def block_define(matrix):
+    nb_block = 1
+    times_nb = 0
+    colon_nb = 0
+    for i in range(9):
+        for j in range(9):
+
+            matrix[i][j]['nblock'] = nb_block
+            times_nb += 1
+            print(i , j)
+            if times_nb % 3 and colon_nb < 9:
+                nb_block += 1
+            if times_nb == 9:
+                nb_block -= 2
+                times_nb = 0
+                colon_nb += 1
+
+            if nb_block % 3 == 0 and colon_nb < 3:
+                nb_block += 1
+            if colon_nb == 3:
+                nb_block += 1
+                colon_nb = 0
+
+
+
+
+print(block_define(game_matrix))
 
 
 #Proposition pour les fonctions de semaine 38 :
