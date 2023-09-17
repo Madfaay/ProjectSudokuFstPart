@@ -1,4 +1,3 @@
-import copy
 
 
 struct_case = {"nblock": 0, "Note_list": [], "val": 0}
@@ -21,21 +20,22 @@ def create_matrix(taille , struct):
 
 
 
-#def block_define(matrix):
 
 
 
 
 
-
+# avec cette fonction j'associe une valeur de block a chaque case , l'algo est correct et avec complexité de n
+# mais le probleme que finalement j'ai tout les cases avec un nblock = 9 , car les variables int en python sont
+#immutables , donc le dernier valeur avec nb_block c'est 9 donc ils deviennet tous 9 . si quelqu'un a une solution
+# c'est juste pour le variable nb_block ne pensez pas trop au alogrithme .
 def block_define(matrix):
-    matrix_copy = copy.deepcopy(matrix)
     nb_block = 1
     times_nb = 0
     colon_nb = 0
     for i in range(9):
         for j in range(9):
-            matrix_copy[i][j].update({'nblock' : nb_block })
+            matrix[i][j].update({'nblock' : nb_block })
             times_nb += 1
 
             if times_nb % 3 == 0 and times_nb != 0 and times_nb != 9 and colon_nb < 3:
@@ -53,13 +53,11 @@ def block_define(matrix):
                     times_nb = 0
                     colon_nb += 1
 
-    return matrix_copy
-
+    return matrix
 
 
 game_matrix = create_matrix(9, struct_case)
 
-print(game_matrix)
 new_matrix = block_define(game_matrix)
 
 print(new_matrix)
