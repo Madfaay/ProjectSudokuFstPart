@@ -1,62 +1,42 @@
-
-
 struct_case = {"nblock": 0, "Note_list": [], "val": 0}
 
-def create_matrix(taille , struct):
-    current_length = 0
-    matrix = []
-    liste_vide = []
-    while current_length < taille:
-        matrix.append(liste_vide)
-        current_length += 1
-    current_length = 0
-    for grille in matrix:
 
-        while current_length < taille:
-            grille.append(struct)
-            current_length += 1
-    current_length = 0
+def create_matrix(taille, struct):
+    matrix = []
+    for i in range(taille):
+        row = [struct.copy() for j in range(taille)]
+        matrix.append(row)
     return matrix
 
 
-
-
-
-
-
-
-# avec cette fonction j'associe une valeur de block a chaque case , l'algo est correct et avec complexité de n
-# mais le probleme que finalement j'ai tout les cases avec un nblock = 9 , car les variables int en python sont
-#immutables , donc le dernier valeur avec nb_block c'est 9 donc ils deviennet tous 9 . si quelqu'un a une solution
-# c'est juste pour le variable nb_block ne pensez pas trop au alogrithme .
 def block_define(matrix):
     nb_block = 1
     times_nb = 0
     colon_nb = 0
     for i in range(9):
         for j in range(9):
-            matrix[i][j].update({'nblock' : nb_block })
+            matrix[i][j].update({'nblock': nb_block})
             times_nb += 1
+            print(matrix[i][j])
 
             if times_nb % 3 == 0 and times_nb != 0 and times_nb != 9 and colon_nb < 3:
                 nb_block += 1
-            else :
+            else:
                 if nb_block % 3 == 0 and colon_nb < 3 and times_nb % 3 == 0:
-                  nb_block += 1
-            if times_nb == 9 :
-                if colon_nb == 2 :
+                    nb_block += 1
+            if times_nb == 9:
+                if colon_nb == 2:
                     colon_nb = 0
                     times_nb = 0
-
-                else :
+                else:
                     nb_block -= 3
                     times_nb = 0
                     colon_nb += 1
 
     return matrix
 
-
 game_matrix = create_matrix(9, struct_case)
+print(game_matrix)
 
 new_matrix = block_define(game_matrix)
 
