@@ -44,14 +44,28 @@ print(new_matrix)
 
 
 
-#Proposition pour les fonctions de semaine 38 :
+# Proposition pour les fonctions de semaine 38 :
 
-#_boxIsEmpty(x , y) (verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
+#(verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
+def box_isempty(matrix,x,y):
+    return matrix[x][y]['val'] == 0
+
+
+testbox_isempty = box_isempty(new_matrix,0,0)
+
+print(testbox_isempty)
 
 #_boxFill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
     #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre (1,9) qu'on peut l'appeler valValidation .
 
-#BoxEmpty(x , y ) vider la case d'une grille , rendre 0 , s'il est differnt de 0 .
+
+#la case d'une grille , rendre 0 , s'il est differnt de 0 .
+def box_empty(matrix,x,y):
+    matrix[x][y].update({'val': 0 })
+    return matrix
+
+testbox_empty = box_empty(new_matrix,0,0)
+print(testbox_empty)
 
 #_Pour vérifier qu’une grille partielle ou complète est valide :
  #-On peut faire une fonction qui valide la bloque d'abord qu'on peut l'appeler BlockValid() , pour verifier si tout les membre de la bloque sont differents .
