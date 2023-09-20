@@ -61,7 +61,8 @@ print(testbox_isempty)
 
 #la case d'une grille , rendre 0 , s'il est differnt de 0 .
 def box_empty(matrix,x,y):
-    matrix[x][y].update({'val': 0 })
+    if box_isempty(matrix,x,y) :
+            matrix[x][y].update({'val': 0 })
     return matrix
 
 testbox_empty = box_empty(new_matrix,0,0)
