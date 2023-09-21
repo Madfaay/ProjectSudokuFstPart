@@ -123,7 +123,10 @@ def block_members_validation (matrix  , block):
 def colon_validation(matrix, colonne):
     numeros_vus = set() # j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
     for ligne in matrix:
-        numero = ligne[colonne]['val']
+        numero = ligne[colonne]['val']               #  #RESTE A VERIFIER Si c'est comme ca ou nn  #
+                                                     # for ligne in range(9):                      #
+                                                     #  numero = matrix[ligne][colonne]['val']     #
+             
         if numero != 0:
             if numero in numeros_vus:
                 return False  
@@ -133,8 +136,10 @@ def colon_validation(matrix, colonne):
 
  #-De meme Une fonction pour valider une ligne line_validation .
 def line_validation(matrix, ligne):
-    numeros_vus = set()  
-    for numero in matrix[ligne]:
+    numeros_vus = set()                            # cela me semble plus logique RESTE A VERIFIER
+                                                   #  for colonne in range(9):
+                                                 # numero = matrix[ligne][colonne]['val']
+    for numero in matrix[ligne]['val']:
         if numero != 0:
             if numero in numeros_vus:
                 return False  # Si le numéro est déjà apparu dans la ligne, la ligne n'est pas valide.
