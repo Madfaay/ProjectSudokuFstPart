@@ -17,7 +17,6 @@ def block_define(matrix):
         for j in range(9):
             matrix[i][j].update({'nblock': nb_block})
             times_nb += 1
-            print(matrix[i][j])
 
             if times_nb % 3 == 0 and times_nb != 0 and times_nb != 9 and colon_nb < 3:
                 nb_block += 1
@@ -36,11 +35,9 @@ def block_define(matrix):
     return matrix
 
 game_matrix = create_matrix(9, struct_case)
-print(game_matrix)
 
-new_matrix = block_define(game_matrix)
+new_matrix = block_define(game_matrix) #matrice a tester
 
-print(new_matrix)
 
 
 
@@ -53,7 +50,6 @@ def box_isempty(matrix,x,y):
 
 testbox_isempty = box_isempty(new_matrix,0,0)
 
-print(testbox_isempty)
 
 #_boxFill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
     #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre (1,9) qu'on peut l'appeler valValidation .
@@ -66,7 +62,6 @@ def box_empty(matrix,x,y):
     return matrix
 
 testbox_empty = box_empty(new_matrix,0,0)
-print(testbox_empty)
 
 #_Pour vérifier qu’une grille partielle ou complète est valide :
  #-On peut faire une fonction qui valide la bloque d'abord qu'on peut l'appeler BlockValid() , pour verifier si tout les membre de la bloque sont differents .
@@ -77,8 +72,8 @@ print(testbox_empty)
 def ColonValid(matrix, colonne): 
     numeros_vus = set() #j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
     for ligne in matrix:
-        numero = ligne[colonne]
         if numero != 0:
+            numero = ligne[colonne]['val']
             if numero in numeros_vus:
                 return False  
             numeros_vus.add(numero)  
