@@ -51,7 +51,7 @@ testbox_isempty = box_isempty(new_matrix,0,0)
 
 
 #_box_fill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
-    #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre (1,9) qu'on peut l'appeler valValidation .
+    #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre(1,9) qu'on peut l'appeler valValidation .
 
 
 def box_fill(matrix , x , y , v):
