@@ -70,5 +70,29 @@ print(testbox_empty)
 
 #_Pour vérifier qu’une grille partielle ou complète est valide :
  #-On peut faire une fonction qui valide la bloque d'abord qu'on peut l'appeler BlockValid() , pour verifier si tout les membre de la bloque sont differents .
+
+
+
  #-Une fonction qui valide toute la colonne elle regarde si chaque nombre est unique dans toute la colonne ColonValid().
+def ColonValid(matrix, colonne): 
+    numeros_vus = set() #j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
+    for ligne in matrix:
+        numero = ligne[colonne]
+        if numero != 0:
+            if numero in numeros_vus:
+                return False  
+            numeros_vus.add(numero)  
+
+    return True
+
  #-De meme Une fonction pour valider une ligne LineValid() .
+def LigneValide(matrix, ligne):
+    numeros_vus = set()  
+    for numero in matrix[ligne]:
+        if numero != 0:
+            if numero in numeros_vus:
+                return False  # Si le numéro est déjà apparu dans la ligne, la ligne n'est pas valide.
+            numeros_vus.add(numero)  # Ajouter le numéro à l'ensemble des numéros vus.
+
+    return True
+
