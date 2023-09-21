@@ -59,7 +59,7 @@ print(testbox_isempty)
     #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre (1,9) qu'on peut l'appeler valValidation .
 
 
-#la case d'une grille , rendre 0 , s'il est differnt de 0 .
+#la case d'une grille , rendre 0 , s'il est differnt de 0.
 def box_empty(matrix,x,y):
     if box_isempty(matrix,x,y) :
             matrix[x][y].update({'val': 0 })
