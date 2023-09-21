@@ -1,5 +1,5 @@
 struct_case = {"nblock": 0, "Note_list": [], "val": 0}
-#test
+
 
 def create_matrix(taille, struct):
     matrix = []
@@ -17,8 +17,6 @@ def block_define(matrix):
         for j in range(9):
             matrix[i][j].update({'nblock': nb_block})
             times_nb += 1
-            print(matrix[i][j])
-
             if times_nb % 3 == 0 and times_nb != 0 and times_nb != 9 and colon_nb < 3:
                 nb_block += 1
             else:
@@ -36,11 +34,9 @@ def block_define(matrix):
     return matrix
 
 game_matrix = create_matrix(9, struct_case)
-print(game_matrix)
 
 new_matrix = block_define(game_matrix)
 
-print(new_matrix)
 
 
 
@@ -53,10 +49,14 @@ def box_isempty(matrix,x,y):
 
 testbox_isempty = box_isempty(new_matrix,0,0)
 
-print(testbox_isempty)
 
-#_boxFill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
+#_box_fill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
     #-il faut bien sur faire une petite fonction pour valider si la valeur est compris entre (1,9) qu'on peut l'appeler valValidation .
+
+
+def box_fill(matrix , x , y , v):
+    if v in range(10) and v != 0 :
+        matrix[x][y]['val']= v
 
 
 #la case d'une grille , rendre 0 , s'il est differnt de 0.
@@ -66,14 +66,13 @@ def box_empty(matrix,x,y):
     return matrix
 
 testbox_empty = box_empty(new_matrix,0,0)
-print(testbox_empty)
 
 #_Pour vérifier qu’une grille partielle ou complète est valide :
  #-On peut faire une fonction qui valide la bloque d'abord qu'on peut l'appeler BlockValid() , pour verifier si tout les membre de la bloque sont differents .
 
-# les deux fonction ligne_debut et colonne_debut c'est pour sont util dans la fonction BlockValide ca nous evite de parcourir toute la matrice rien que pour verfier un seul block 
+# les deux fonction ligne_debut et colonne_debut c'est pour l'utilisation dans la fonction BlockValide ca nous evite de parcourir toute la matrice rien que pour verfier un seul block
 
-def ligne_debut(block):
+def line_begining(block):
     result = None  # Initialisez la variable result à une valeur par défaut
 
     if block >= 1:
@@ -91,7 +90,7 @@ def ligne_debut(block):
     return result 
 
 
-def colonne_debut(block):
+def colon_begining(block):
     result = None  # Initialisez la variable result à une valeur par défaut
 
     if block % 3 == 0:
@@ -106,13 +105,13 @@ def colonne_debut(block):
     return result 
 
 
-def BlockValid (matrix  , block):
+def block_members_validation (matrix  , block):
     numeros_vus = set()
-    debut_ligne  = ligne_debut(block)
-    debut_colonne = colonne_debut(block)
-    for ligne in range(ligne_debut, ligne_debut + 4):
-        for colonne in range(colonne_debut, colonne_debut + 4):
-            valeur = matrix[ligne][colonne]
+    debut_ligne  = line_begining(block)
+    debut_colonne = colon_begining(block)
+    for ligne in range(debut_ligne, debut_ligne + 3):
+        for colonne in range(debut_colonne, debut_colonne + 3):
+            valeur = matrix[ligne][colonne]['val']
             if valeur in numeros_vus: 
                 return False
             else:
@@ -121,10 +120,10 @@ def BlockValid (matrix  , block):
 
 
  #-Une fonction qui valide toute la colonne elle regarde si chaque nombre est unique dans toute la colonne ColonValid().
-def ColonValid(matrix, colonne): 
-    numeros_vus = set() #j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
+def colon_validation(matrix, colonne):
+    numeros_vus = set() # j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
     for ligne in matrix:
-        numero = ligne[colonne]
+        numero = ligne[colonne]['val']
         if numero != 0:
             if numero in numeros_vus:
                 return False  
@@ -132,8 +131,8 @@ def ColonValid(matrix, colonne):
 
     return True
 
- #-De meme Une fonction pour valider une ligne LineValid() .
-def LigneValide(matrix, ligne):
+ #-De meme Une fonction pour valider une ligne line_validation .
+def line_validation(matrix, ligne):
     numeros_vus = set()  
     for numero in matrix[ligne]:
         if numero != 0:
@@ -145,18 +144,13 @@ def LigneValide(matrix, ligne):
 
 
 def GrilleValid (matrix) :
-    for ligne in matrix : 
-        if LigneValide(matrix,ligne)== False:
+    for ligne in matrix :
+        if line_validation(matrix,ligne)== False:
             return False
     for colonne in matrix:
-        if ColonValid(matrix,colonne) ==  False :
+        if colon_validation(matrix,colonne) ==  False :
             return False
     for block in range(1,10): # la boucle elle de 1 a 9
-        if BlockValid(matrix, block)==False :
+        if block_members_validation(matrix, block)==False :
             return False
     return True
-
-
-
-
-
