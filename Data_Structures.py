@@ -110,8 +110,8 @@ def BlockValid (matrix  , block):
     numeros_vus = set()
     debut_ligne  = ligne_debut(block)
     debut_colonne = colonne_debut(block)
-    for ligne in range(ligne_debut, ligne_debut + 3):
-        for colonne in range(colonne_debut, colonne_debut + 3):
+    for ligne in range(ligne_debut, ligne_debut + 4):
+        for colonne in range(colonne_debut, colonne_debut + 4):
             valeur = matrix[ligne][colonne]
             if valeur in numeros_vus: 
                 return False
@@ -142,4 +142,21 @@ def LigneValide(matrix, ligne):
             numeros_vus.add(numero)  # Ajouter le numéro à l'ensemble des numéros vus.
 
     return True
+
+
+def GrilleValid (matrix) :
+    for ligne in matrix : 
+        if LigneValide(matrix,ligne)== False:
+            return False
+    for colonne in matrix:
+        if ColonValid(matrix,colonne) ==  False :
+            return False
+    for block in range(1,10): # la boucle elle de 1 a 9
+        if BlockValid(matrix, block)==False :
+            return False
+    return True
+
+
+
+
 
