@@ -71,6 +71,53 @@ print(testbox_empty)
 #_Pour vérifier qu’une grille partielle ou complète est valide :
  #-On peut faire une fonction qui valide la bloque d'abord qu'on peut l'appeler BlockValid() , pour verifier si tout les membre de la bloque sont differents .
 
+# les deux fonction ligne_debut et colonne_debut c'est pour sont util dans la fonction BlockValide ca nous evite de parcourir toute la matrice rien que pour verfier un seul block 
+
+def ligne_debut(block):
+    result = None  # Initialisez la variable result à une valeur par défaut
+
+    if block >= 1:
+        if block <= 3:
+            result = 1
+        elif block <= 6:  # Utilisez "elif" pour éviter des conditions inutiles
+            result = 2
+        elif block <= 9:
+            result = 3
+        else:
+            print("Le bloc est invalide")
+    else:
+        print("Le bloc est invalide")
+
+    return result 
+
+
+def colonne_debut(block):
+    result = None  # Initialisez la variable result à une valeur par défaut
+
+    if block % 3 == 0:
+        result = 7
+    elif block % 3 == 2:
+        result = 4
+    elif block % 3 == 1:
+        result = 1
+    else:
+        print("Block invalide")
+
+    return result 
+
+
+def BlockValid (matrix  , block):
+    numeros_vus = set()
+    debut_ligne  = ligne_debut(block)
+    debut_colonne = colonne_debut(block)
+    for ligne in range(ligne_debut, ligne_debut + 3):
+        for colonne in range(colonne_debut, colonne_debut + 3):
+            valeur = matrix[ligne][colonne]
+            if valeur in numeros_vus: 
+                return False
+            else:
+                numeros_vus.add(valeur)
+    return True
 
 
  #-Une fonction qui valide toute la colonne elle regarde si chaque nombre est unique dans toute la colonne ColonValid().
