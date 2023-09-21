@@ -36,7 +36,7 @@ def block_define(matrix):
 
 game_matrix = create_matrix(9, struct_case)
 
-new_matrix = block_define(game_matrix) #matrice a tester
+new_matrix = block_define(game_matrix) #matrice a tester .
 
 
 
