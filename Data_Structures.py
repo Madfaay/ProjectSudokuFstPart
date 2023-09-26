@@ -14,7 +14,7 @@ def print_matrix(matrix):
         for j in range(const_grille_taille):
             if j % const_racine_taille == 0 and not j == 0:
                 print(end="| ")
-            print(matrix[i][j]['val'], end=" ")
+            print(get_val(matrix,i,j), end=" ")
         print("\n")
 
 
@@ -22,7 +22,7 @@ def print_matrix(matrix):
 
 # (verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
 def box_isempty(matrix, x, y):
-    return matrix[x][y]['val'] == 0
+    return get_val(matrix,x,y) == 0
 
 
 
@@ -35,13 +35,13 @@ def box_isempty(matrix, x, y):
 
 def box_fill(matrix, x, y, v):
     if v in range(10) and v != 0:
-        matrix[x][y]['val'] = v
+        matrix=set_val(matrix,x,y,v)
 
 
-# la case d'une grille , rendre 0 , s'il est differnt de 0.
+# la case d'une grille , rend 0 , s'il est differnt de 0.
 def box_empty(matrix, x, y):
     if box_isempty(matrix, x, y):
-        matrix[x][y].update({'val': 0})
+        matrix=set_val(matrix,x,y,0)
     return matrix
 
 
@@ -92,7 +92,7 @@ def block_members_validation(matrix, block):
     debut_colonne = colon_begining(block)
     for ligne in range(debut_ligne, debut_ligne + 3):
         for colonne in range(debut_colonne, debut_colonne + 3):
-            valeur = matrix[ligne][colonne]['val']
+            valeur = get_val(matrix,ligne,colonne)
             if valeur in numeros_vus:
                 return False
             else:
@@ -106,7 +106,7 @@ def colon_validation(matrix, colonne):
     for ligne in matrix:
         numero = ligne[colonne]['val']  # #RESTE A VERIFIER Si c'est comme ca ou nn  #
         # for ligne in range(9):                      #
-        #  numero = matrix[ligne][colonne]['val']     #
+        #  numero = get_val(matrix,ligne,colonne)     #
 
         if numero != 0:
             if numero in numeros_vus:
@@ -120,7 +120,7 @@ def colon_validation(matrix, colonne):
 def line_validation(matrix, ligne):
     numeros_vus = set()  # cela me semble plus logique RESTE A VERIFIER
     for colonne in range(9):
-        numero = matrix[ligne][colonne]['val']
+        numero = get_val(matrix,ligne,colonne)
 
         if numero != 0:
             if numero in numeros_vus:

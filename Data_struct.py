@@ -18,13 +18,43 @@ def create_matrix(taille, struct):
         matrix.append(row)
     return matrix
 
+#permet de récupérer la valeur 'nblock' de struct_case
+def get_nblock(matrix,x,y):
+    return matrix[x][y]['nblock']
+
+#permet de modifier la valeur 'nblock' de struct_case
+def set_nblock(matrix,x,y,nb_block):
+    matrix[x][y].update({'nblock': nb_block})
+    return matrix
+
+#permet de récupérer la valeur 'Note_list' de struct_case
+def get_note(matrix,x,y):
+    return matrix[x][y]['Note_list']
+
+
+def remove_note(matrix,x,y,id):
+    matrix[x][y][{"Note_liste"[id]:False}]
+
+
+
+#permet de récupérer l'élément 'val' de struct_case
+def get_val(matrix,x,y):
+    return matrix[x][y]['val']
+
+#permet de modifier la valeur 'val' de struct_case
+def set_val(matrix,x,y,val):
+    matrix[x][y].update({'val': val})
+    return matrix
+
+
+
 def block_define(matrix):
     nb_block = 1
     times_nb = 0
     colon_nb = 0
     for i in range(const_grille_taille):
         for j in range(const_grille_taille):
-            matrix[i][j].update({'nblock': nb_block})
+            matrix= set_nblock(matrix,i,j,nb_block)
             times_nb += 1
             if times_nb % const_racine_taille == 0 and times_nb != 0 and times_nb != const_grille_taille and colon_nb < const_racine_taille:
                 nb_block += 1
