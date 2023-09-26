@@ -107,7 +107,7 @@ def colon_validation(matrix, colonne):
         numero = ligne[colonne]['val']  # #RESTE A VERIFIER Si c'est comme ca ou nn  #
         # for ligne in range(9):                      #
         #  numero = get_val(matrix,ligne,colonne)     #
-
+        #print(numero)
         if numero != 0:
             if numero in numeros_vus:
                 return False
@@ -118,16 +118,17 @@ def colon_validation(matrix, colonne):
 
 # -De meme Une fonction pour valider une ligne line_validation .
 def line_validation(matrix, ligne):
-    numeros_vus = set()  # cela me semble plus logique RESTE A VERIFIER
+    numeros_vus = set()  
     for colonne in range(9):
         numero = get_val(matrix,ligne,colonne)
+        #print(numero)
 
         if numero != 0:
             if numero in numeros_vus:
                 return False  # Si le numéro est déjà apparu dans la ligne, la ligne n'est pas valide.
             numeros_vus.add(numero)  # Ajouter le numéro à l'ensemble des numéros vus.
-
-        return True
+                     
+    return True
 
 def grid_validation(matrix):
     for ligne in matrix:
@@ -148,7 +149,10 @@ matrix = block_define(create_matrix(9 , struct_case))
 
 
 box_fill(matrix,1 , 0 , 5)
-box_fill(matrix,1 , 1 , 5)
-
+box_fill(matrix,1 , 1 , 0)
+box_fill(matrix,1 , 2 , 5)
+print_matrix(matrix)
+print(line_validation(matrix,1))
+#line_validation(matrix,0)
 
 
