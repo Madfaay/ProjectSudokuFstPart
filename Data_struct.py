@@ -33,7 +33,10 @@ def get_note(matrix,x,y):
 
 
 def remove_note(matrix,x,y,id):
-    matrix[x][y][{"Note_liste"[id]:False}]
+    new_note=get_note(matrix,x,y)
+    new_note[id-1]=False
+    matrix[x][y][{"Note_liste":new_note}]
+    return matrix
 
 
 
