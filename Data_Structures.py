@@ -2,12 +2,15 @@ from Data_struct import *
 import random
 
 
+def print_matrix(matrix) :
+    """
+La fonction print_matrix permet d'afficher la matrice.
+:param matrix: La matrice qui contient les cases structurées.
+:type matrix: list[list[struct_case]]
+:return: Aucune valeur n'est renvoyée, la fonction effectue simplement un affichage .
+:rtype: None
 
-
-
-
-
-def print_matrix(matrix):
+       """
     for i in range(const_grille_taille):
         if i % const_racine_taille == 0 and not i == 0:
             print("_______________________\n")
@@ -20,29 +23,62 @@ def print_matrix(matrix):
 
 
 
-# (verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
 def box_isempty(matrix, x, y):
+    """
+    :param matrix: La matrice qui contient les cases structurées.
+    :type matrix: list[list[struct_case]]
+    :param x: L'abscisse de la case.
+    :type x: int
+    :param y: L'ordonnée de la case.
+    :type y: int
+    :return: True c'est la case posséde 0 comme valeur , pour une autre valaure c'est False .
+    :rtype: bool
+
+       """
+
     return get_val(matrix,x,y) == 0
 
 
 
 
 
-# _box_fill(x , y , v ) ( rempli la case si elle vaut 0 avec la valeur v .
-# -il faut bien sur faire une petite fonction pour valider si la valeur est compris
-# entre(1,9) qu'on peut l'appeler valValidation .
 
 
-def box_fill(matrix, x, y, v):
+def box_fill(matrix, x, y, v) -> None:
+    """
+    La fonction box_fill remplie la case s'elle vaut 0 avec la valeur v
+    :param matrix: La matrice qui contient les cases structurées.
+    :type matrix: list[list[struct_case]]
+    :param x: L'abscisse de la case.
+    :type x: int
+    :param y: L'ordonnée de la case.
+    :type y: int
+    :param v: la valeur qu'on veut l'affecter à la case.
+    :type v: int
+    :return: Rien elle fait juste une modification.
+    :rtype: void
+
+       """
     if v in range(10) and v != 0:
-        matrix=set_val(matrix,x,y,v)
+        set_val(matrix,x,y,v)
 
 
 # la case d'une grille , rend 0 , s'il est differnt de 0.
 def box_empty(matrix, x, y):
+    """
+     La fonction box_empty remplie la case d'une grille avec la valeur 0 si ce n'est pas déja fait .
+     :param matrix: La matrice qui contient les cases structurées.
+     :type matrix: list[list[struct_case]]
+     :param x: L'abscisse de la case.
+     :type x: int
+     :param y: L'ordonnée de la case.
+     :type y: int
+     :return: Rien elle fait juste une modification.
+     :rtype: void
+
+        """
     if box_isempty(matrix, x, y):
-        matrix=set_val(matrix,x,y,0)
-    return matrix
+        set_val(matrix,x,y,0)
 
 
 
@@ -100,14 +136,21 @@ def block_members_validation(matrix, block):
     return True
 
 
-# -Une fonction qui valide toute la colonne elle regarde si chaque nombre est unique dans toute la colonne ColonValid().
+# -Une
 def colon_validation(matrix, colonne):
+    """
+     La fonction colon_validation valide toute la colonne elle regarde si chaque nombre est unique dans toute la colonne .
+     :param matrix: La matrice qui contient les cases structurées.
+     :type matrix: list[list[struct_case]]
+     :colonne x: L'abscisse de la case.
+     :type colonne: int
+     :return: True c'est la colonne est valide , False sinon .
+     :rtype: bool
+
+        """
     numeros_vus = set()  # j'ai crée un ensemble pour qu'il sauvegarde dedans un numéro déja vu pour la prochaine verif
     for ligne in matrix:
-        numero = ligne[colonne]['val']  # #RESTE A VERIFIER Si c'est comme ca ou nn  #
-        # for ligne in range(9):                      #
-        #  numero = get_val(matrix,ligne,colonne)     #
-        #print(numero)
+        numero = ligne[colonne]['val']
         if numero != 0:
             if numero in numeros_vus:
                 return False
@@ -118,6 +161,16 @@ def colon_validation(matrix, colonne):
 
 # -De meme Une fonction pour valider une ligne line_validation .
 def line_validation(matrix, ligne):
+    """
+        La fonction line_validation valide toute la ligne elle regarde si chaque nombre est unique dans toute la ligne .
+        :param matrix: La matrice qui contient les cases structurées.
+        :type matrix: list[list[struct_case]]
+        :colonne x: L'abscisse de la case.
+        :type colonne: int
+        :return: True c'est la ligne est valide , False sinon .
+        :rtype: bool
+
+           """
     numeros_vus = set()  
     for colonne in range(9):
         numero = get_val(matrix,ligne,colonne)
