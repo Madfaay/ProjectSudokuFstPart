@@ -77,7 +77,7 @@ def box_empty(matrix, x, y):
      :rtype: void
 
         """
-    if box_isempty(matrix, x, y):
+    if not box_isempty(matrix, x, y):
         set_val(matrix,x,y,0)
 
 
@@ -90,6 +90,14 @@ def box_empty(matrix, x, y):
 # cela nous evite de parcourir toute la matrice rien que pour verfier un seul block
 
 def line_begining(block):
+    """
+        La fonction 'line_begining' prend en paramètre un bloc et retourne la première ligne de ce bloc
+        :param block: L'abscisse de la case.
+        :type block: int
+        :return: retourne la première ligne de ce bloc.
+        :rtype: void
+
+           """
     result = None  # Initialisez la variable result à une valeur par défaut
 
     if block >= 1:
@@ -108,6 +116,14 @@ def line_begining(block):
 
 
 def colon_begining(block):
+    """
+        La fonction 'colon_begining' prend en paramètre un bloc et retourne la première colonne de ce bloc
+        :param block: l'ordonnée de la case.
+        :type block: int
+        :return: retourne la première colonne de ce bloc.
+        :rtype: void
+
+           """
     result = None  # Initialisez la variable result à une valeur par défaut
 
     if block % 3 == 0:
@@ -123,6 +139,18 @@ def colon_begining(block):
 
 
 def block_members_validation(matrix, block):
+    """
+        La fonction 'block_members_validatio' prend une matrice en paramètre et vérifie si elle est valide ou non.
+        Si toutes les lignes, colonnes et blocs sont valides, alors la grille est considérée comme valide, sinon non
+        :param matrix: La matrice qui contient les cases structurées.
+         :type matrix: list[list[struct_case]]
+         :param block: numero de block.
+         :type block: int
+         :return : un booléen True si le block est valide False sinon
+         :rtype : bool
+
+
+                 """
     numeros_vus = set()
     debut_ligne = line_begining(block)
     debut_colonne = colon_begining(block)
@@ -171,7 +199,7 @@ def line_validation(matrix, ligne):
         :rtype: bool
 
            """
-    numeros_vus = set()  
+    numeros_vus = set()
     for colonne in range(9):
         numero = get_val(matrix,ligne,colonne)
         #print(numero)
@@ -180,10 +208,19 @@ def line_validation(matrix, ligne):
             if numero in numeros_vus:
                 return False  # Si le numéro est déjà apparu dans la ligne, la ligne n'est pas valide.
             numeros_vus.add(numero)  # Ajouter le numéro à l'ensemble des numéros vus.
-                     
+
     return True
 
 def grid_validation(matrix):
+    """
+    La fonction 'grid_validation' prend une matrice en paramètre et vérifie si elle est valide ou non.
+    Si toutes les lignes, colonnes et blocs sont valides, alors la grille est considérée comme valide, sinon non.
+    :param matrix: La matrice qui contient les cases structurées.
+    :type matrix: list[list[struct_case]]
+    :return: True si la grille est valide, False sinon.
+    :rtype: bool
+
+    """
     for ligne in matrix:
         if not line_validation(matrix, ligne):
             return False
@@ -197,15 +234,6 @@ def grid_validation(matrix):
 
 
 
-matrix = block_define(create_matrix(9 , struct_case))
 
-
-
-box_fill(matrix,1 , 0 , 5)
-box_fill(matrix,1 , 1 , 0)
-box_fill(matrix,1 , 2 , 5)
-print_matrix(matrix)
-print(line_validation(matrix,1))
-#line_validation(matrix,0)
 
 
