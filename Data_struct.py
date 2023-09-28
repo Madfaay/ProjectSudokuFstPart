@@ -18,33 +18,34 @@ def create_matrix(taille, struct):
         matrix.append(row)
     return matrix
 
-#permet de récupérer la valeur 'nblock' de struct_case
+#permet de récupérer la valeur 'nblock' de struct_case d'une case
 def get_nblock(matrix,x,y):
     return matrix[x][y]['nblock']
 
-#permet de modifier la valeur 'nblock' de struct_case
+#permet de modifier la valeur 'nblock' de struct_case d'une case
 def set_nblock(matrix,x,y,nb_block):
     matrix[x][y].update({'nblock': nb_block})
     return matrix
 
-#permet de récupérer la valeur 'Note_list' de struct_case
+#permet de récupérer la valeur 'Note_list' de struct_case d'une case
 def get_note(matrix,x,y):
     return matrix[x][y]['Note_list']
 
 
+#enlève la note d'une case de l'indice donné
 def remove_note(matrix,x,y,id):
     new_note=get_note(matrix,x,y)
     new_note[id-1]=False
-    matrix[x][y][{"Note_liste":new_note}]
+    matrix[x][y].update({'Note_list':new_note})
     return matrix
 
 
 
-#permet de récupérer l'élément 'val' de struct_case
+#permet de récupérer l'élément 'val' de struct_case d'une case
 def get_val(matrix,x,y):
     return matrix[x][y]['val']
 
-#permet de modifier la valeur 'val' de struct_case
+#permet de modifier la valeur 'val' de struct_case d'une case
 def set_val(matrix,x,y,val):
     matrix[x][y].update({'val': val})
     return matrix

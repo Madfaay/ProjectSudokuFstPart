@@ -20,7 +20,7 @@ def print_matrix(matrix):
 
 
 
-# (verifie si une case est vide il prende en parametre les coordonés x , y de la case) .
+# verifie si une case est vide, prend en parametre les coordonés x , y de la case
 def box_isempty(matrix, x, y):
     return get_val(matrix,x,y) == 0
 
@@ -38,7 +38,7 @@ def box_fill(matrix, x, y, v):
         matrix=set_val(matrix,x,y,v)
 
 
-# la case d'une grille , rend 0 , s'il est differnt de 0.
+# vide la valeur de la case
 def box_empty(matrix, x, y):
     if box_isempty(matrix, x, y):
         matrix=set_val(matrix,x,y,0)
