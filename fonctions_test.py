@@ -36,8 +36,6 @@ def test_box_empty():
     assert matrix2 == matrix1  # compare les deux matrices
 
 
-
-
 if __name__ == '__main__':
     test_create_matrix()
     print("La fonction create_matrix a passé les tests avec succès.")
