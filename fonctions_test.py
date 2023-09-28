@@ -61,7 +61,7 @@ def test_box_isempty():
     assert box_isempty(matrix1,1,1) == True         #test sur une case vide
     assert box_isempty(matrix2,2,2) == False        #test sur une case non-vide
 
-
+  
 
 def test_line_validation():
    
