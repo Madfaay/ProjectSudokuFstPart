@@ -37,7 +37,7 @@ def create_matrix(taille, struct) -> list[list[struct_case]]:
 
 
 
-#permet de récupérer la valeur 'nblock' de struct_case
+#permet de récupérer la valeur'nblock' de struct_case
 
 
 def get_nblock(matrix,x,y):
