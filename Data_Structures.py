@@ -52,7 +52,7 @@ def box_empty(matrix, x, y):
 # pour verifier si tout les membre de la bloque sont differents .
 # les deux fonction ligne_debut et colonne_debut c'est pour l'utilisation dans la fonction BlockValide
 # cela nous evite de parcourir toute la matrice rien que pour verfier un seul block
-
+#La fonction 'line_begining' prend en paramètre un bloc et retourne la première ligne de ce bloc
 def line_begining(block):
     result = None  # Initialisez la variable result à une valeur par défaut
 
@@ -70,7 +70,7 @@ def line_begining(block):
 
     return result
 
-
+#La fonction 'colon_begining' prend en paramètre un bloc et retourne la première colonne de ce bloc
 def colon_begining(block):
     result = None  # Initialisez la variable result à une valeur par défaut
 
@@ -84,8 +84,7 @@ def colon_begining(block):
         print("Block invalide")
 
     return result
-
-
+#La fonction 'block_members_validation' prend en paramètre une matrice et un bloc, et elle vérifie si le bloc est valide ou non. Elle recherche s'il y a des répétitions dans le bloc." 
 def block_members_validation(matrix, block):
     numeros_vus = set()
     debut_ligne = line_begining(block)
@@ -129,7 +128,7 @@ def line_validation(matrix, ligne):
             numeros_vus.add(numero)  # Ajouter le numéro à l'ensemble des numéros vus.
                      
     return True
-
+# La fonction 'grid_validation' prend une matrice en paramètre et vérifie si elle est valide ou non. Si toutes les lignes, colonnes et blocs sont valides, alors la grille est considérée comme valide, sinon non
 def grid_validation(matrix):
     for ligne in matrix:
         if not line_validation(matrix, ligne):
