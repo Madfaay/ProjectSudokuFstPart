@@ -2,7 +2,7 @@ const_grille_taille = 9
 const_racine_taille = 3
 
 
-def create_noteslist() :
+def create_noteslist() -> list[bool]:
     """
     La fonction create_note_list nous permet de créer une liste composée de 9 booléens
     initialisé à True.
@@ -11,7 +11,7 @@ def create_noteslist() :
     """
     res_list = []
     for i in range(9):
-        res_list.append(True)
+        res_list.append("True")
     return res_list
 
 
@@ -34,8 +34,6 @@ def create_matrix(taille, struct) -> list[list[struct_case]]:
         row = [struct.copy() for _ in range(taille)]
         matrix.append(row)
     return matrix
-
-
 
 #permet de récupérer la valeur 'nblock' de struct_case
 
@@ -161,7 +159,7 @@ Voir aussi:
     colon_nb = 0
     for i in range(const_grille_taille):
         for j in range(const_grille_taille):
-            set_nblock(matrix,i,j,nb_block)
+            matrix= set_nblock(matrix,i,j,nb_block)
             times_nb += 1
             if times_nb % const_racine_taille == 0 and times_nb != 0 and times_nb != const_grille_taille and colon_nb < const_racine_taille:
                 nb_block += 1
