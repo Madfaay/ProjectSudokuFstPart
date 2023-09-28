@@ -95,7 +95,6 @@ def test_line_validation():
 
     assert line_validation(invalid_sudoku, 8) == False  # Neuvième ligne invalide
 
-    print("Tous les tests de line_validation sont terminés.")
 
 
 def test_colon_validation():
@@ -130,6 +129,37 @@ def test_colon_validation():
     ]
 
     assert colon_validation(invalid_sudoku, 8) == False  # Neuvième colonne invalide
+    
+    
+def test_block_members_validation ():
+    # Créez une matrice Sudoku valide
+    valid_sudoku = [
+        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 2, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 9]
+    ]
+    for i in range(9):
+        assert block_members_validation(valid_sudoku, i) == True
+    invalid_sudoku = [
+        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [6, 7, 2, 1, 9, 5, 3, 4, 8],
+        [1, 9, 8, 3, 4, 2, 5, 6, 7],
+        [8, 5, 9, 7, 6, 1, 4, 2, 3],                             # Testez une colonne invalide (doublon de 6)
+        [4, 2, 6, 8, 5, 3, 7, 9, 1],
+        [7, 1, 3, 9, 2, 4, 8, 5, 6],
+        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [2, 8, 7, 4, 1, 9, 6, 3, 5],
+        [3, 4, 5, 2, 8, 6, 1, 7, 6]  
+    ]
+    for i in range(9):
+        assert block_members_validation(valid_sudoku, i) == False
+
 
     print("Tous les tests de colon_validation sont terminés.")
 
@@ -154,4 +184,6 @@ if __name__ == '__main__':
     print("La fonction test_box_isempty a passé les tests avec succès.")
     test_box_empty()
     print("La fonction test_box_empty a passé les tests avec succès.")
+    test_block_members_validation()
+    print("la fonction test_block_validation a passé les tests avec succés")
 
