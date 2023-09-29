@@ -15,7 +15,7 @@ def create_noteslist() :
     return res_list
 
 
-struct_case = {"nblock": 0, "Note_list": create_noteslist(), "val": 0}
+struct_case = {"nblock": 0, "Note_list": create_noteslist() , "val": 0}
 
 
 def create_matrix(taille, struct) -> list[list[struct_case]]:
