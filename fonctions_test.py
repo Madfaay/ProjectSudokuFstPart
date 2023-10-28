@@ -130,9 +130,14 @@ def test_colon_validation():
 
     assert colon_validation(invalid_sudoku, 8) == False  # Neuvième colonne invalide
     
-    
+
+
+
 def test_block_members_validation ():
     # Créez une matrice Sudoku valide
+    struct_case = {"nblock": 0, "Note_list": create_noteslist(), "val": 0}
+    
+    matrix_valide = create_matrix(9, struct_case)
     valid_sudoku = [
         [5, 3, 4, 6, 7, 8, 9, 1, 2],
         [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -145,23 +150,32 @@ def test_block_members_validation ():
         [3, 4, 5, 2, 8, 6, 1, 7, 9]
     ]
     for i in range(9):
-        assert block_members_validation(valid_sudoku, i) == True
+        for j in range(9):
+            set_val(matrix_valide,i,j,valid_sudoku[i][j])
+    
+
+    for i in range(9):
+        assert block_members_validation(matrix_valide, i+1) == True
+    matrix_invalide = create_matrix(9, struct_case)    
     invalid_sudoku = [
-        [5, 3, 4, 6, 7, 8, 9, 1, 2],
+        [5, 1, 4, 6, 7, 8, 9, 9, 2],
         [6, 7, 2, 1, 9, 5, 3, 4, 8],
-        [1, 9, 8, 3, 4, 2, 5, 6, 7],
-        [8, 5, 9, 7, 6, 1, 4, 2, 3],                             # Testez une colonne invalide (doublon de 6)
+        [1, 9, 8, 4, 4, 2, 5, 6, 7],
+        [8, 8, 9, 7, 7, 1, 1, 2, 3],                             # Testez une colonne invalide (doublon de 6)
         [4, 2, 6, 8, 5, 3, 7, 9, 1],
         [7, 1, 3, 9, 2, 4, 8, 5, 6],
-        [9, 6, 1, 5, 3, 7, 2, 8, 4],
+        [6, 6, 1, 3, 3, 7, 8, 8, 4],
         [2, 8, 7, 4, 1, 9, 6, 3, 5],
         [3, 4, 5, 2, 8, 6, 1, 7, 6]  
     ]
     for i in range(9):
-        assert block_members_validation(valid_sudoku, i) == False
+        for j in range(9):
+            set_val(matrix_invalide,i,j,invalid_sudoku[i][j])    
+    for i in range(9):
+        assert block_members_validation(matrix_invalide, i+1) == False
 
 
-    print("Tous les tests de colon_validation sont terminés.")
+ 
 
 
 
@@ -172,18 +186,24 @@ def test_block_members_validation ():
 
 
 if __name__ == '__main__':
-    test_create_matrix()
+    test_create_matrix() 
     print("La fonction create_matrix a passé les tests avec succès.")
+
     test_create_noteList()
     print("La fonction test_create_noteList a passé les tests avec succès.")
+
     test_block_define()
     print("La fonction test_block_define() a passé les tests avec succès.")
+
     test_box_fill()
     print("La fonction test_box_fill() a passé les tests avec succès.")
+
     test_box_isempty()
     print("La fonction test_box_isempty a passé les tests avec succès.")
+
     test_box_empty()
     print("La fonction test_box_empty a passé les tests avec succès.")
+
     test_block_members_validation()
     print("la fonction test_block_validation a passé les tests avec succés")
 

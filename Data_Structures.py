@@ -89,7 +89,7 @@ def box_empty(matrix, x, y):
 # les deux fonction ligne_debut et colonne_debut c'est pour l'utilisation dans la fonction BlockValide
 # cela nous evite de parcourir toute la matrice rien que pour verfier un seul block
 
-def line_begining(block):
+def line_begining(block) :
     """
         La fonction 'line_begining' prend en paramètre un bloc et retourne la première ligne de ce bloc
         :param block: L'abscisse de la case.
@@ -107,11 +107,6 @@ def line_begining(block):
             result = 3
         elif block <= 9:
             result = 6
-        else:
-            print("Le bloc est invalide")
-    else:
-        print("Le bloc est invalide")
-
     return result
 
 
@@ -132,8 +127,7 @@ def colon_begining(block):
         result = 3
     elif block % 3 == 1:
         result = 0
-    else:
-        print("Block invalide")
+
 
     return result
 
@@ -152,15 +146,14 @@ def block_members_validation(matrix, block):
 
                  """
     numeros_vus = set()
-    debut_ligne = line_begining(block)
+    debut_ligne  = line_begining(block)
     debut_colonne = colon_begining(block)
     for ligne in range(debut_ligne, debut_ligne + 3):
         for colonne in range(debut_colonne, debut_colonne + 3):
-            valeur = get_val(matrix,ligne,colonne)
+            valeur =get_val(matrix,ligne,colonne)
             if valeur in numeros_vus:
                 return False
-            else:
-                numeros_vus.add(valeur)
+            numeros_vus.add(valeur)
     return True
 
 # -Une
